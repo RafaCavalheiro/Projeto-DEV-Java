@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;	// Utilizado na lin
 import org.springframework.web.bind.annotation.ResponseBody;	// Utilizado na linha 22
 import org.springframework.web.bind.annotation.RequestMapping;	// Utilizado na linha 14
 import org.springframework.web.bind.annotation.RestController;	// Utilizado na linha 13
-
+import org.springframework.web.servlet.view.RedirectView;		// Utilizado na linha 22
 import org.springframework.beans.factory.annotation.Autowired; 	// Utilizado na linha 17
 
 @RestController								// Anotação para Controller de API Rest
@@ -19,7 +19,7 @@ public class UsuarioController {
   	private UsuarioRepository usuarioRepository;
 
 	@GetMapping(path="/add")				// Anotação para get e rota do método
-	public @ResponseBody String addNewUsuario(@RequestParam(value = "nomeusuario", defaultValue = "Nome usuário não informado") String nomeusuario, 	//RequestParam recebe por URL a informação de nomeusuario e valida se não está vazia
+	public @ResponseBody RedirectView addNewUsuario(@RequestParam(value = "nomeusuario", defaultValue = "Nome usuário não informado") String nomeusuario, 	//RequestParam recebe por URL a informação de nomeusuario e valida se não está vazia
 						 					  @RequestParam(value = "tipousuario", defaultValue = "Tipo usuário não informado") String tipousuario) { 	//RequestParam recebe por URL a informação de tipousuario e valida se não está vazia
 							 
 		Usuario dados = new Usuario(); 		// Inicia um novo objeto de Usuarios
@@ -27,7 +27,7 @@ public class UsuarioController {
 		dados.setTipousuario(tipousuario); 	// Atribui a variavel tipousuario ao Tipo Usuario
 		usuarioRepository.save(dados); 		// Salva dados no objeto de Usuarios no reposítorio de Usuarios
 
-		return "Usuário criado!"; 			// Mensagem de retorno
+        return new RedirectView("../"); 	// Retorna para index
 	}
 
 	@GetMapping(path="/cientista")			// Anotação para get e rota do método

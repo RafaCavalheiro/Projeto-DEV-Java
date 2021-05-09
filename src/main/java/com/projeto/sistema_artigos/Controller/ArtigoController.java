@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;	// Utilizado na lin
 import org.springframework.web.bind.annotation.ResponseBody;	// Utilizado na linha 22
 import org.springframework.web.bind.annotation.RequestMapping;	// Utilizado na linha 14
 import org.springframework.web.bind.annotation.RestController;	// Utilizado na linha 13
-
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.beans.factory.annotation.Autowired;	// Utilizado na linha 17
 
 @RestController								// Anotação para Controller de API Rest
@@ -19,16 +19,16 @@ public class ArtigoController {
   	private ArtigoRepository artigoRepository;
 
 	@GetMapping(path="/add")				// Anotação para get e rota do método
-	public @ResponseBody String addNewArtigo(@RequestParam(value = "nomeartigo", defaultValue = "Nome artigo não informado") String nomeartigo, 				 //RequestParam recebe por URL a informação de nomeartigo e valida se não está vazia
-						 					 @RequestParam(value = "descricaoartigo", defaultValue = "Descrição artigo não informado") String descricaoartigo) { //RequestParam recebe por URL a informação de descricaoartigo e valida se não está vazia
+	public @ResponseBody RedirectView addNewArtigo(@RequestParam(value = "nomeartigo", defaultValue = "Nome artigo não informado") String nomeartigo, 				//RequestParam recebe por URL a informação de nomeartigo e valida se não está vazia
+						 					 @RequestParam(value = "descricaoartigo", defaultValue = "Descrição artigo não informado") String descricaoartigo) { 	//RequestParam recebe por URL a informação de descricaoartigo e valida se não está vazia
 							 
 		Artigo dados = new Artigo();		// Inicia um novo objeto de Artigos
 		dados.setNomeartigo(nomeartigo);	// Atribui a variavel nomeartigo ao Nomeartigo
 		dados.setDescricaoartigo(descricaoartigo); // Atribui a variavel descricaoartigo ao Descricaoartigo
 		dados.setAssinatura(false);			// Atribui o valor false ao Assinatura
 		artigoRepository.save(dados);		// Salva dados no objeto de Artigos no reposítorio de Artigo
-
-		return "Artigo criado!";			// Mensagem de retorno
+		
+        return new RedirectView("../"); 	// Retorna para index
 	}
 
 	@GetMapping(path="/all")				// Anotação para get e rota do método	
