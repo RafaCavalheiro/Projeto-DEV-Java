@@ -4,8 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.projeto.sistema_artigos.Model.Usuario;  
 
-// This will be AUTO IMPLEMENTED by Spring into a Bean called usuarioRepository
-// CRUD refers Create, Read, Update, Delete
+// Este será AUTO IMPLEMENTADO pelo Spring em um Bean chamado artigoRepository
+// CRUD se refere a Create, Read, Update, Delete
 
 public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
 
