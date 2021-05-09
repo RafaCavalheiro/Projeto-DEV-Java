@@ -36,7 +36,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping(path="/pesquisador")		// Anotação para get e rota do método
-	public @ResponseBody Iterable<Usuario> getAllPesquisar() {
+	public @ResponseBody Iterable<Usuario> getAllPesquisador() {
 		return usuarioRepository.findAll();	// Retorna um JSON com todos os usuarios
 	}	
 	
