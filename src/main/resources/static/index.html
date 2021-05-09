@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Sistema de Artigos</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p><a href="artigo/all">Artigos</a></p>
+    <p><a href="usuario/cientista">Lista de Cientistas</a></p>
+    <p><a href="usuario/pesquisador">Lista de Pesquisadores</a></p>
+           
+    <center>
+        <h2>Sistema de Artigos Cientificos</h2>
+
+        <form method="get"  action="artigo/add">
+            Nome: 
+            <input type="text" name="nomeartigo" placeholder="Nome do artigo" required="true"/>
+            <br>
+            Descrição: 
+            <textarea name="descricaoartigo" placeholder="Descrição do artigo" required="true"></textarea>
+            <br>
+            <input type="submit" value="Cadastrar"/>
+        </form>
+        
+        <h2>Cadastrar Usuário</h2>
+
+        <form method="get"  action="usuario/add">
+            Nome: 
+            <input type="text" name="nomeusuario" placeholder="Nome do usuario" required="true"/>
+            <br>
+            Tipo Usuário: 
+            <select name="tipousuario" placeholder="Tipo do usuario" required="true">
+                <option value="" selected="true" disabled="true">Selecione um tipo de usuário</option>
+                <option value="Cientista">Cientista</option>
+                <option value="Pesquisador">Pesquisador</option>
+            </select>
+            <br>
+            <input type="submit" value="Cadastrar"/>
+        </form>
+    </center>
+</body>
+</html>
